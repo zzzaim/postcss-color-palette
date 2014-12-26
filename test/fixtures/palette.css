@@ -1,0 +1,84 @@
+.aqua {
+  color: aqua;
+  background: linear-gradient(aqua, #FFFFFF 50%, aqua);
+}
+
+.black {
+  color: black;
+  background: linear-gradient(black, #FFFFFF 50%, black);
+}
+
+.blue {
+  color: blue;
+  background: linear-gradient(blue, #FFFFFF 50%, blue);
+}
+
+.fuchsia {
+  color: fuchsia;
+  background: linear-gradient(fuchsia, #FFFFFF 50%, fuchsia);
+}
+
+.gray {
+  color: gray;
+  background: linear-gradient(gray, #FFFFFF 50%, gray);
+}
+
+.green {
+  color: green;
+  background: linear-gradient(green, #FFFFFF 50%, green);
+}
+
+.lime {
+  color: lime;
+  background: linear-gradient(lime, #FFFFFF 50%, lime);
+}
+
+.maroon {
+  color: maroon;
+  background: linear-gradient(maroon, #FFFFFF 50%, maroon);
+}
+
+.navy {
+  color: navy;
+  background: linear-gradient(navy, #FFFFFF 50%, navy);
+}
+
+.olive {
+  color: olive;
+  background: linear-gradient(olive, #FFFFFF 50%, olive);
+}
+
+.orange {
+  color: orange;
+  background: linear-gradient(orange, #FFFFFF 50%, orange);
+}
+
+.purple {
+  color: purple;
+  background: linear-gradient(purple, #FFFFFF 50%, purple);
+}
+
+.red {
+  color: red;
+  background: linear-gradient(red, #FFFFFF 50%, red);
+}
+
+.silver {
+  color: silver;
+  background: linear-gradient(silver, #FFFFFF 50%, silver);
+}
+
+.teal {
+  color: teal;
+  background: linear-gradient(teal, #FFFFFF 50%, teal);
+}
+
+.white {
+  color: white;
+  background: linear-gradient(white, #FFFFFF 50%, white);
+}
+
+.yellow {
+  color: yellow;
+  background: linear-gradient(yellow, #FFFFFF 50%, yellow);
+}

@@ -1,0 +1,84 @@
+.aqua {
+  color: #7FDBFF;
+  background: linear-gradient(#7FDBFF, #FFFFFF 50%, #7FDBFF);
+}
+
+.black {
+  color: #111111;
+  background: linear-gradient(#111111, #FFFFFF 50%, #111111);
+}
+
+.blue {
+  color: #0074D9;
+  background: linear-gradient(#0074D9, #FFFFFF 50%, #0074D9);
+}
+
+.fuchsia {
+  color: #F012BE;
+  background: linear-gradient(#F012BE, #FFFFFF 50%, #F012BE);
+}
+
+.gray {
+  color: #AAAAAA;
+  background: linear-gradient(#AAAAAA, #FFFFFF 50%, #AAAAAA);
+}
+
+.green {
+  color: #2ECC40;
+  background: linear-gradient(#2ECC40, #FFFFFF 50%, #2ECC40);
+}
+
+.lime {
+  color: #01FF70;
+  background: linear-gradient(#01FF70, #FFFFFF 50%, #01FF70);
+}
+
+.maroon {
+  color: #85144B;
+  background: linear-gradient(#85144B, #FFFFFF 50%, #85144B);
+}
+
+.navy {
+  color: #001F3F;
+  background: linear-gradient(#001F3F, #FFFFFF 50%, #001F3F);
+}
+
+.olive {
+  color: #3D9970;
+  background: linear-gradient(#3D9970, #FFFFFF 50%, #3D9970);
+}
+
+.orange {
+  color: #FF851B;
+  background: linear-gradient(#FF851B, #FFFFFF 50%, #FF851B);
+}
+
+.purple {
+  color: #B10DC9;
+  background: linear-gradient(#B10DC9, #FFFFFF 50%, #B10DC9);
+}
+
+.red {
+  color: #FF4136;
+  background: linear-gradient(#FF4136, #FFFFFF 50%, #FF4136);
+}
+
+.silver {
+  color: #DDDDDD;
+  background: linear-gradient(#DDDDDD, #FFFFFF 50%, #DDDDDD);
+}
+
+.teal {
+  color: #39CCCC;
+  background: linear-gradient(#39CCCC, #FFFFFF 50%, #39CCCC);
+}
+
+.white {
+  color: #FFFFFF;
+  background: linear-gradient(#FFFFFF, #FFFFFF 50%, #FFFFFF);
+}
+
+.yellow {
+  color: #FFDC00;
+  background: linear-gradient(#FFDC00, #FFFFFF 50%, #FFDC00);
+}
