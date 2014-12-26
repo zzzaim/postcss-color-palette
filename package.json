@@ -2,10 +2,6 @@
   "name": "postcss-color-palette",
   "version": "0.0.1",
   "description": "PostCSS plugin to transform CSS2 color keywords to a custom palette",
-  "main": "index.js",
-  "scripts": {
-    "test": "mocha"
-  },
   "keywords": [
     "css",
     "postcss",
@@ -14,8 +10,18 @@
     "colour",
     "palette"
   ],
-  "author": "zaim <abuzaim12@gmail.com>",
+  "homepage": "https://github.com/zaim/postcss-color-palette",
+  "bugs": "https://github.com/zaim/postcss-color-palette/issues",
   "license": "MIT",
+  "author": "zaim <abuzaim12@gmail.com>",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zaim/postcss-color-palette.git"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
   "dependencies": {
     "postcss-message-helpers": "^1.1.1",
     "webcolors": "^1.0.1"
