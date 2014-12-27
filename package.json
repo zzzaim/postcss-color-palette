@@ -24,7 +24,7 @@
   },
   "dependencies": {
     "postcss-message-helpers": "^1.1.1",
-    "webcolors": "^1.0.1"
+    "webcolors": "^1.1.0"
   },
   "devDependencies": {
     "mocha": "^2.1.0",
