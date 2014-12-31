@@ -3,6 +3,21 @@ var webcolors = require('webcolors');
 
 var DEFAULTS = webcolors.mrmrs;
 
+// All props that use the <color> data type
+// https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#See_also
+var PROPS = [
+  'color',
+  'background',
+  'background-color',
+  'border',
+  'border-color',
+  'outline',
+  'outline-color',
+  'text-shadow',
+  'box-shadow'
+];
+
+// CSS color keywords to replace
 var KEYWORDS = [
   'aqua',
   'black',
@@ -41,6 +56,8 @@ module.exports = function plugin (opts) {
   var palette    = opts.palette;
   var transforms = [];
 
+  // For each color keyword, generate a [RegExp, 'replacement'] pair,
+  // i.e. the arguments to String.prototype.replace
   KEYWORDS.forEach(function (keyword) {
     if (palette.hasOwnProperty(keyword) && palette[keyword]) {
       transforms.push([
@@ -52,9 +69,14 @@ module.exports = function plugin (opts) {
 
   return function processor (css) {
     css.eachDecl(function transformDecl (decl) {
-      if (!decl.value || !KEYWORD_REGEX.test(decl.value)) {
+      // Check if the decl is of a color-related property and make sure
+      // it has a value containing a replaceable color
+      if (PROPS.indexOf(decl.prop) === -1 ||
+          !decl.value ||
+          !KEYWORD_REGEX.test(decl.value)) {
         return;
       }
+      // Transform!
       decl.value = helpers.try(function transformValue () {
         return transforms.reduce(function (value, args) {
           return value.replace.apply(value, args);
