@@ -27,6 +27,7 @@
     "webcolors": "^1.1.0"
   },
   "devDependencies": {
+    "expect.js": "^0.3.1",
     "mocha": "^2.1.0",
     "postcss": "^3.0.7"
   }

@@ -1,7 +1,7 @@
 /* global describe, it */
 
 var fs      = require('fs');
-var assert  = require('assert');
+var expect  = require('expect.js');
 var postcss = require('postcss');
 var plugin  = require('..');
 
@@ -16,10 +16,10 @@ function read (name) {
 function compareFixtures (name, opts) {
   var input    = filename(name);
   var cssOpts  = { from: filename(name + '.actual') };
-  var actual   = postcss().use(plugin(opts)).process(read(input), cssOpts).css;
+  var output   = postcss().use(plugin(opts)).process(read(input), cssOpts).css;
   var expected = read(filename(name + '.expected'));
-  fs.writeFile(cssOpts.from, actual);
-  assert.equal(actual, expected);
+  fs.writeFile(cssOpts.from, output);
+  expect(output).to.eql(expected);
 }
 
 describe('plugin', function (t) {
