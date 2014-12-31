@@ -1,6 +1,6 @@
 {
   "name": "postcss-color-palette",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "PostCSS plugin to transform CSS2 color keywords to a custom palette",
   "keywords": [
     "css",
