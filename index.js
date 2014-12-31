@@ -61,8 +61,8 @@ module.exports = function plugin (opts) {
   KEYWORDS.forEach(function (keyword) {
     if (palette.hasOwnProperty(keyword) && palette[keyword]) {
       transforms.push([
-        new RegExp('\\b(' + keyword + ')\\b', 'gi'),
-        palette[keyword]
+        new RegExp('\\b(' + keyword + ')(\\s*([^(]|$))', 'gi'),
+        palette[keyword] + '$2'
       ]);
     }
   });

@@ -1,3 +1,9 @@
+.test-color-functions {
+  color: gray(127);
+  color: color(red blue(+ 30));
+  color: color(color(green hue(10%)) blue(+30));
+}
+
 .aqua {
   color: aqua;
   background: linear-gradient(aqua, #FFFFFF 50%, aqua);
