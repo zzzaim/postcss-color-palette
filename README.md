@@ -7,7 +7,7 @@ This plugin can transform color keywords such as `aqua`, `blue`, `lime`, etc.
 to any other color. Bundled with the
 [webcolors](https://github.com/zaim/webcolors) package, making three beautiful
 color palettes available to use in your stylesheets: [clrs.cc](http://clrs.cc)/[mrmrs](https://github.com/mrmrs/colors),
-[FlatUI](http://flatuicolors.co) and [Material](http://www.google.com/design/spec/style/color.html) -- simply by using standard color names.
+[FlatUI](https://flatuicolors.com) and [Material](https://material.io/guidelines/style/color.html#color-color-palette) -- simply by using standard color names.
 
 ## Installation
 
