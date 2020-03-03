@@ -8,11 +8,11 @@ This plugin can transform color keywords such as `aqua`, `blue`, `lime`, etc.
 to any other color. Bundled with the
 [webcolors](https://github.com/zzzaim/webcolors) package, making these
 color palettes available for use in your stylesheets:
-[bootstrap](https://getbootstrap.com),
-[bulma](https://bulma.io),
+[Bootstrap](https://getbootstrap.com),
+[Bulma](https://bulma.io),
 [mrmrs](http://clrs.cc),
-[FlatUI](http://flatuicolors.com),
-[Material](https://material.io/design) and
+[FlatUI](https://flatuicolors.com),
+[Material](https://material.io/design/color/the-color-system.html) and
 [Tailwind](https://tailwindcss.com)
 -- simply by using standard CSS2 color keywords.
 
