@@ -1,60 +1,67 @@
 /* global describe, it */
 
 const assert = require("chai").assert;
-const palette = require("webcolors").mrmrs;
-const plugin = require("..")({ palette });
-const postcss = require("postcss")([plugin]);
+const webcolors = require("webcolors");
+const PostCSS = require("postcss");
+const Plugin = require("..");
 
-describe("color keyword transformations", () => {
-  const transforms = {
-    color: {
-      css: "color: aqua",
-      expected: `color: ${palette.aqua}`
-    },
-    border: {
-      css: "border: 1px solid yellow",
-      expected: `border: 1px solid ${palette.yellow}`
-    },
-    arguments: {
-      css: "color: func(navy)",
-      expected: `color: func(${palette.navy})`
-    },
-    gradient: {
-      css: "background: linear-gradient(purple, #FFFFFF 50%)",
-      expected: `background: linear-gradient(${palette.purple}, #FFFFFF 50%)`
-    }
-  };
+Object.keys(webcolors).forEach(name => {
+  const palette = webcolors[name];
 
-  const ignores = {
-    url: {
-      css: "background: url('green.png')"
-    },
-    functions: {
-      css: "color: blue(50%)"
-    },
-    fonts: {
-      css: "font-family: 'black', olive, navy-font"
-    }
-  };
+  describe(`palette: ${name}`, () => {
+    const plugin = Plugin({ palette: name });
+    const postcss = PostCSS([plugin]);
 
-  Object.keys(transforms).forEach(name => {
-    const test = transforms[name];
-    const css = `a{${test.css}}`;
-    const expected = `a{${test.expected}}`;
+    const transforms = {
+      color: {
+        css: "color: blue",
+        expected: `color: ${palette.blue}`
+      },
+      border: {
+        css: "border: 1px solid purple",
+        expected: `border: 1px solid ${palette.purple}`
+      },
+      arguments: {
+        css: "color: func(red)",
+        expected: `color: func(${palette.red})`
+      },
+      gradient: {
+        css: "background: linear-gradient(orange, #FFFFFF 50%)",
+        expected: `background: linear-gradient(${palette.orange}, #FFFFFF 50%)`
+      }
+    };
 
-    it(`should transform colors in '${name}'`, () => {
-      const result = postcss.process(css);
-      assert.equal(result.css, expected);
+    const ignores = {
+      url: {
+        css: "background: url('yellow.png')"
+      },
+      functions: {
+        css: "color: green(50%)"
+      },
+      fonts: {
+        css: "font-family: 'black', teal, gray-font"
+      }
+    };
+
+    Object.keys(transforms).forEach(name => {
+      const test = transforms[name];
+      const css = `a{${test.css}}`;
+      const expected = `a{${test.expected}}`;
+
+      it(`should transform colors in '${name}'`, () => {
+        const result = postcss.process(css);
+        assert.equal(result.css, expected);
+      });
     });
-  });
 
-  Object.keys(ignores).forEach(name => {
-    const test = ignores[name];
-    const css = `a{${test.css}}`;
+    Object.keys(ignores).forEach(name => {
+      const test = ignores[name];
+      const css = `a{${test.css}}`;
 
-    it(`should ignore colors in '${name}'`, () => {
-      const result = postcss.process(css);
-      assert.equal(result.css, css);
+      it(`should ignore colors in '${name}'`, () => {
+        const result = postcss.process(css);
+        assert.equal(result.css, css);
+      });
     });
   });
 });

@@ -1,6 +1,8 @@
 const postcss = require("postcss");
+const webcolors = require("webcolors");
 const { parse, nodeToString } = require("postcss-values-parser");
-const defaultPalette = require("webcolors").mrmrs;
+
+const defaultPalette = webcolors.mrmrs;
 
 // All CSS properties that use the <color> data type
 // https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#See_also
@@ -28,6 +30,14 @@ module.exports = postcss.plugin("postcss-color-palette", options => {
   options = options || {};
   options.palette = options.palette || defaultPalette;
 
+  if (typeof options.palette === "string") {
+    options.palette = webcolors[options.palette];
+  }
+
+  if (!options.palette || typeof options.palette !== "object") {
+    throw new Error(`Invalid palette: ${options.palette}`);
+  }
+
   return root => {
     root.walkRules(rule => {
       rule.walkDecls(PROPERTIES_REGEX, decl => {
@@ -37,7 +47,10 @@ module.exports = postcss.plugin("postcss-color-palette", options => {
           if (word.isColor) {
             const key = word.value.toLowerCase();
 
-            if (hasOwnProperty.call(options.palette, key)) {
+            if (
+              hasOwnProperty.call(options.palette, key) &&
+              options.palette[key]
+            ) {
               word.value = options.palette[key];
             }
           }
