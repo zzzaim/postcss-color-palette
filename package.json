@@ -1,7 +1,7 @@
 {
   "name": "postcss-color-palette",
   "version": "0.0.3",
-  "description": "PostCSS plugin to transform CSS2 color keywords to a custom palette",
+  "description": "PostCSS plugin to transform CSS2 color keywords into a custom palette",
   "keywords": [
     "color",
     "css",
@@ -20,7 +20,8 @@
     "url": "https://github.com/zzzaim/postcss-color-palette.git"
   },
   "scripts": {
-    "test": "mocha"
+    "test": "mocha",
+    "release": "standard-version"
   },
   "dependencies": {
     "postcss": "^7.0.27",
@@ -32,7 +33,15 @@
     "eslint": "^6.8.0",
     "eslint-config-prettier": "^6.10.0",
     "eslint-plugin-prettier": "^3.1.2",
+    "husky": "^4.2.3",
     "mocha": "^7.1.0",
-    "prettier": "^1.19.1"
+    "prettier": "^1.19.1",
+    "standard-version": "^7.1.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm test",
+      "pre-push": "npm test"
+    }
   }
 }
