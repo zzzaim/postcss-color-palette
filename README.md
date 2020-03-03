@@ -1,13 +1,20 @@
 # postcss-color-palette
 
-> [PostCSS](https://github.com/postcss/postcss) plugin to transform
-> [CSS2 color keywords](http://www.w3.org/TR/2011/REC-CSS2-20110607/syndata.html#value-def-color) to a custom palette
+**[PostCSS](https://github.com/postcss/postcss) plugin to transform
+[CSS2 color keywords](http://www.w3.org/TR/2011/REC-CSS2-20110607/syndata.html#value-def-color)
+into a custom palette.**
 
 This plugin can transform color keywords such as `aqua`, `blue`, `lime`, etc.
 to any other color. Bundled with the
-[webcolors](https://github.com/zaim/webcolors) package, making three beautiful
-color palettes available to use in your stylesheets: [clrs.cc](http://clrs.cc)/[mrmrs](https://github.com/mrmrs/colors),
-[FlatUI](http://flatuicolors.co) and [Material](http://www.google.com/design/spec/style/color.html) -- simply by using standard color names.
+[webcolors](https://github.com/zzzaim/webcolors) package, making these
+color palettes available for use in your stylesheets:
+[bootstrap](https://getbootstrap.com),
+[bulma](https://bulma.io),
+[mrmrs](http://clrs.cc),
+[FlatUI](http://flatuicolors.com)
+[Material](https://material.io/design) and
+[Tailwind](https://tailwindcss.com)
+-- simply by using standard CSS2 color keywords.
 
 ## Installation
 
@@ -18,15 +25,12 @@ $ npm install postcss-color-palette
 ## Usage
 
 ```javascript
-// dependencies
 var fs = require('fs');
 var postcss = require('postcss');
 var palette = require('postcss-color-palette');
 
-// css to be processed
 var css = fs.readFileSync('input.css', 'utf8');
 
-// process it
 var output = postcss()
   .use(palette({
     palette: 'material'
@@ -57,9 +61,10 @@ body {
 
 #### `palette`
 
-Specify a [webcolors](https://github.com/zaim/webcolors) palette name
-(`mrmrs`, `material` or `flatui`), or an object mapping of [CSS2 color keywords](http://www.w3.org/TR/2011/REC-CSS2-20110607/syndata.html#value-def-color) to
-color values. By default, uses the [mrmrs](https://github.com/mrmrs/colors)
+Specify a [webcolors](https://github.com/zzzaim/webcolors) palette name
+(`bootstrap`, `bulma`, `mrmrs`, `material`, `flatui`, `tailwind`), or an
+object mapping of [CSS2 color keywords](http://www.w3.org/TR/2011/REC-CSS2-20110607/syndata.html#value-def-color)
+to color values. By default, uses the [mrmrs](https://github.com/mrmrs/colors)
 color palette.
 
 ## License

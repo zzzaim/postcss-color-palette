@@ -1,90 +1,50 @@
-var helpers = require("postcss-message-helpers");
-var webcolors = require("webcolors");
+const postcss = require("postcss");
+const { parse, nodeToString } = require("postcss-values-parser");
+const defaultPalette = require("webcolors").mrmrs;
 
-var DEFAULTS = webcolors.mrmrs;
-
-// All props that use the <color> data type
+// All CSS properties that use the <color> data type
 // https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#See_also
-var PROPS = [
+const PROPERTIES = [
   "color",
-  "background",
-  "background-color",
-  "border",
-  "border-color",
-  "outline",
-  "outline-color",
-  "text-shadow",
-  "box-shadow"
+  "(background|outline)(-color)?",
+  "border(-top|-right|-bottom|-left)?(-color)?",
+  "(text|box)-shadow"
 ];
 
-// CSS color keywords to replace
-var KEYWORDS = [
-  "aqua",
-  "black",
-  "blue",
-  "fuchsia",
-  "gray",
-  "green",
-  "lime",
-  "maroon",
-  "navy",
-  "olive",
-  "orange",
-  "purple",
-  "red",
-  "silver",
-  "teal",
-  "white",
-  "yellow"
-];
+const PROPERTIES_REGEX = new RegExp("^(" + PROPERTIES.join("|") + ")$");
 
-var KEYWORD_REGEX = new RegExp("\\b(" + KEYWORDS.join("|") + ")\\b");
+const hasOwnProperty = Object.prototype.hasOwnProperty;
 
-var hasOwnProperty = Object.prototype.hasOwnProperty;
+/**
+ * PostCSS Color Palette plugin.
+ *
+ * Transforms CSS Level 2 color keywords into any colors.
+ *
+ * @param {Object} options          Plugin options
+ * @param {Object} options.palette  A map of CSS Level 2 color keywords
+ *                                  to new color values.
+ */
+module.exports = postcss.plugin("postcss-color-palette", options => {
+  options = options || {};
+  options.palette = options.palette || defaultPalette;
 
-module.exports = function plugin(opts) {
-  opts = opts || {};
-  opts.palette = opts.palette || DEFAULTS;
+  return root => {
+    root.walkRules(rule => {
+      rule.walkDecls(PROPERTIES_REGEX, decl => {
+        const value = parse(decl.value);
 
-  if (typeof opts.palette === "string") {
-    if (hasOwnProperty.call(webcolors, opts.palette)) {
-      opts.palette = webcolors[opts.palette];
-    } else {
-      throw new Error('Unknown webcolors palette: "' + opts.palette + '"');
-    }
-  }
+        value.walkWords(word => {
+          if (word.isColor) {
+            const key = word.value.toLowerCase();
 
-  var palette = opts.palette;
-  var transforms = [];
+            if (hasOwnProperty.call(options.palette, key)) {
+              word.value = options.palette[key];
+            }
+          }
+        });
 
-  // For each color keyword, generate a [RegExp, 'replacement'] pair,
-  // i.e. the arguments to String.prototype.replace
-  KEYWORDS.forEach(function(keyword) {
-    if (hasOwnProperty.call(palette, keyword) && palette[keyword]) {
-      transforms.push([
-        new RegExp("\\b(" + keyword + ")(\\s*([^(]|$))", "gi"),
-        palette[keyword] + "$2"
-      ]);
-    }
-  });
-
-  return function processor(css) {
-    css.eachDecl(function transformDecl(decl) {
-      // Check if the decl is of a color-related property and make sure
-      // it has a value containing a replaceable color
-      if (
-        PROPS.indexOf(decl.prop) === -1 ||
-        !decl.value ||
-        !KEYWORD_REGEX.test(decl.value)
-      ) {
-        return;
-      }
-      // Transform!
-      decl.value = helpers.try(function transformValue() {
-        return transforms.reduce(function(value, args) {
-          return value.replace.apply(value, args);
-        }, decl.value);
-      }, decl.source);
+        decl.value = nodeToString(value);
+      });
     });
   };
-};
+});

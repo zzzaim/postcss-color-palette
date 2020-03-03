@@ -3,36 +3,36 @@
   "version": "0.0.3",
   "description": "PostCSS plugin to transform CSS2 color keywords to a custom palette",
   "keywords": [
-    "css",
-    "postcss",
-    "postcss-plugins",
     "color",
-    "colour",
-    "palette"
+    "css",
+    "palette",
+    "postcss",
+    "postcss-plugin",
+    "postcss-plugins"
   ],
-  "homepage": "https://github.com/zaim/postcss-color-palette",
-  "bugs": "https://github.com/zaim/postcss-color-palette/issues",
+  "homepage": "https://github.com/zzzaim/postcss-color-palette",
+  "bugs": "https://github.com/zzzaim/postcss-color-palette/issues",
   "license": "MIT",
-  "author": "zaim <abuzaim12@gmail.com>",
+  "author": "Zaim Bakar (https://zbr.works)",
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/zaim/postcss-color-palette.git"
+    "url": "https://github.com/zzzaim/postcss-color-palette.git"
   },
   "scripts": {
     "test": "mocha"
   },
   "dependencies": {
-    "postcss-message-helpers": "^1.1.1",
-    "webcolors": "^1.1.0"
+    "postcss": "^7.0.27",
+    "postcss-values-parser": "^3.1.1",
+    "webcolors": "^2.0.1"
   },
   "devDependencies": {
+    "chai": "^4.2.0",
     "eslint": "^6.8.0",
     "eslint-config-prettier": "^6.10.0",
     "eslint-plugin-prettier": "^3.1.2",
-    "expect.js": "^0.3.1",
     "mocha": "^7.1.0",
-    "postcss": "^3.0.7",
     "prettier": "^1.19.1"
   }
 }
